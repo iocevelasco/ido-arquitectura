@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* la barra fija no tapa el título al saltar a un ancla */
+  }
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-dot ring-offset-2 ring-offset-paper;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply mx-auto max-w-site px-4 md:px-12;
+  }
+  .section {
+    @apply relative py-16 md:py-24;
+  }
+  /* Meta-datos y fichas técnicas: mono, mayúsculas, tracking amplio. */
+  .meta {
+    @apply font-mono text-xs uppercase tracking-[0.04em] text-ink/60;
+  }
+  /* Esquina superior derecha recortada: espacios y datos (fotos de proyecto, bloques de acento). */
+  .chamfer {
+    clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
+  }
+}
+
+@layer utilities {
+  /* Grilla de plano de fondo, con nodos en los cruces (docs/estructura-visual.md §3.4). */
+  .blueprint-grid {
+    background-image:
+      radial-gradient(circle, theme('colors.ink.DEFAULT / 22%') 2px, transparent 2.5px),
+      linear-gradient(to right, theme('colors.ink.DEFAULT / 8%') 1px, transparent 1px),
+      linear-gradient(to bottom, theme('colors.ink.DEFAULT / 8%') 1px, transparent 1px);
+    background-size: 160px 160px;
+    background-position: -1px -1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 150ms !important;
+  }
+}
