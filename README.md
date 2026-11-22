@@ -1,4 +1,4 @@
-# IDO Arquitectura · Estudio
+# IDO Arquitectura
 
 Landing page de IDO Arquitectura ("Ideas con denominación de origen").
 
