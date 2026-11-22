@@ -7,8 +7,9 @@ Estructura tomada de `iocevelasco/topoconcret`.
 ## Stack
 
 - Vite 5 + React 18 + TypeScript (strict, `noUnusedLocals`) + Tailwind 3 + Lucide.
-- Contacto: enlaces a WhatsApp (`whatsappUrl()`), `mailto:` e Instagram. El formulario de
-  `docs/estructura-visual.md` S7 está pendiente hasta decidir a dónde envía.
+- Contacto: formulario que **envía por WhatsApp** (`src/components/ui/ContactForm.tsx`): arma el texto con
+  `contactMessage()` y abre `wa.me` (`whatsappUrl()`). No hay backend. Sin `COMPANY.whatsapp` el formulario
+  muestra un aviso y ofrece Instagram. Los chips de Tipologías marcan su opción en el formulario (`src/lib/typology.ts`).
 - Base: `/ido-arquitectura/` (GitHub Pages) por defecto; `VITE_BASE=/` para dominio propio.
   `npm run build` = `tsc && vite build`: **un error de tipos rompe el build** (y el CI).
 - Gestor de paquetes: npm.
@@ -34,10 +35,10 @@ npx tsc --noEmit  # sólo tipos
 - `src/components/sections/` — una sección por archivo, en el orden de `App.tsx`. El `id` de cada
   sección es el ancla de `NAV`.
 - `src/components/layout/` — Navbar (barra meta + menú + índice de celular) y Footer.
-- `src/components/ui/` — piezas reutilizables: `LinkButton`, `SectionHeading`, `Dot`.
+- `src/components/ui/` — piezas reutilizables: `LinkButton`, `SectionHeading`, `Dot`, `ContactForm`.
 - `src/hooks/` — `useActiveSection` (el punto naranja del menú).
 - `public/images/` — assets, siempre con `asset('images/...')` de `src/constants/base.ts`.
-- `tailwind.config.js` — tokens: `paper`, `paper-2`, `ink`, `dot`, `sun`; fuentes `display`, `sans`, `mono`;
+- `tailwind.config.js` — tokens: `paper`, `paper-2`, `ink`, `dot`, `sun`, `alert` (errores); fuentes `display`, `sans`, `mono`;
   duraciones `fast/base/slow/scene`.
 - `src/index.css` — clases de sistema: `.section`, `.section-container`, `.meta`, `.chamfer`, `.blueprint-grid`.
 

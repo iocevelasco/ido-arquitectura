@@ -1,16 +1,13 @@
-import { CONTACT, COMPANY, instagramUrl, whatsappUrl } from '../../constants/data'
-import { LinkButton } from '../ui/Button'
+import { ArrowUpRight } from 'lucide-react'
+import { CONTACT, COMPANY, instagramUrl } from '../../constants/data'
+import ContactForm from '../ui/ContactForm'
 import SectionHeading from '../ui/SectionHeading'
 
 // Pestañas de carpeta de la lámina de cierre del Canva.
 const TABS = ['bg-paper', 'bg-ink/15', 'bg-ink', 'bg-sun']
 
-/**
- * Cierre. PENDIENTE: formulario (docs/estructura-visual.md §5 S7) cuando se decida a dónde envía
- * (servicio de formularios o WhatsApp). Por ahora, enlaces directos.
- */
+/** Cierre de la página: formulario que envía por WhatsApp (docs/estructura-visual.md §5 S7). */
 export default function Contact() {
-  const wa = whatsappUrl()
   return (
     <section id="contacto" className="section pt-0">
       <div className="section-container">
@@ -19,33 +16,32 @@ export default function Contact() {
             <span key={tab} className={`h-3 ${tab}`} />
           ))}
         </div>
-        <div className="grid gap-10 bg-paper-2 px-6 py-12 md:grid-cols-2 md:px-12 md:py-16">
-          <SectionHeading strong={CONTACT.titleStrong} light={CONTACT.titleLight} />
-          <div className="space-y-6">
-            <p className="text-lg">{CONTACT.intro}</p>
-            <div className="flex flex-wrap gap-4">
-              {wa && (
-                <LinkButton href={wa} target="_blank" rel="noopener noreferrer" variant="accent">
-                  Escríbenos por WhatsApp
-                </LinkButton>
-              )}
+        <div className="grid gap-12 bg-paper-2 px-6 py-12 md:grid-cols-2 md:px-12 md:py-16">
+          <div>
+            <SectionHeading strong={CONTACT.titleStrong} light={CONTACT.titleLight} />
+            <p className="mt-6 max-w-sm pl-5 text-lg">{CONTACT.intro}</p>
+            <ul className="meta mt-8 space-y-2 pl-5">
               {COMPANY.email && (
-                <LinkButton href={`mailto:${COMPANY.email}`} variant={wa ? 'ghost' : 'primary'}>
-                  {COMPANY.email}
-                </LinkButton>
+                <li>
+                  <a href={`mailto:${COMPANY.email}`} className="hover:text-ink">
+                    {COMPANY.email}
+                  </a>
+                </li>
               )}
-              <LinkButton
-                href={instagramUrl(COMPANY.instagram)}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant={wa || COMPANY.email ? 'ghost' : 'primary'}
-              >
-                @{COMPANY.instagram}
-              </LinkButton>
-            </div>
-            {!wa && !COMPANY.email && <p className="meta">{CONTACT.pendingNotice}</p>}
-            <p className="meta">{COMPANY.city}</p>
+              <li>
+                <a
+                  href={instagramUrl(COMPANY.instagram)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 hover:text-ink"
+                >
+                  @{COMPANY.instagram} <ArrowUpRight size={12} aria-hidden="true" />
+                </a>
+              </li>
+              <li>{COMPANY.city}</li>
+            </ul>
           </div>
+          <ContactForm />
         </div>
       </div>
     </section>

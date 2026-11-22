@@ -243,5 +243,43 @@ export const CONTACT = {
   titleStrong: '¿Tienes dudas?',
   titleLight: 'Conversemos.',
   intro: 'Cuéntanos qué quieres construir, remodelar o imaginar. Te respondemos personalmente.',
-  pendingNotice: 'Pronto agregaremos WhatsApp y correo. Mientras tanto, escríbenos por Instagram.',
+  form: {
+    nameLabel: 'Tu nombre',
+    typesLabel: 'Tipo de proyecto',
+    typesHint: 'Opcional. Puedes marcar varios.',
+    messageLabel: 'Cuéntanos tu idea',
+    messagePlaceholder: 'Qué quieres hacer, dónde y para cuándo, más o menos.',
+    submit: 'Enviar por WhatsApp',
+    submitHint: 'Se abre WhatsApp con tu mensaje listo; sólo tienes que darle a enviar.',
+    errors: {
+      name: 'Dinos cómo te llamas para saber a quién responder.',
+      message: 'Cuéntanos al menos un poco de tu idea (10 caracteres o más).',
+    },
+    success: {
+      titleStrong: '¡Listo!',
+      titleLight: 'Tu idea ya tiene denominación de origen.',
+      body: 'Abrimos WhatsApp con tu mensaje. Si no se abrió, usa el botón de abajo.',
+      reopen: 'Abrir WhatsApp de nuevo',
+      reset: 'Escribir otro mensaje',
+    },
+    // Mientras falte COMPANY.whatsapp el formulario no puede enviar: se avisa y se ofrece Instagram.
+    pendingNumber:
+      'Estamos configurando nuestro WhatsApp. Mientras tanto, escríbenos por Instagram.',
+  },
+}
+
+/** Texto que llega al WhatsApp del estudio. */
+export function contactMessage({
+  name,
+  types,
+  message,
+}: {
+  name: string
+  types: string[]
+  message: string
+}): string {
+  const lines = [`Hola IDO, soy ${name.trim()}.`]
+  if (types.length) lines.push(`Proyecto: ${types.join(', ')}.`)
+  lines.push('', message.trim())
+  return lines.join('\n')
 }

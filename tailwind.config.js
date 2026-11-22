@@ -9,6 +9,7 @@ export default {
         ink: { DEFAULT: '#032540' }, // azul marino del logo: texto, líneas, bloques
         dot: { DEFAULT: '#FAAD43' }, // naranja de los puntos del logo: sólo formas, nunca texto sobre claro
         sun: { DEFAULT: '#FBDF58' }, // amarillo de apoyo, puntual
+        alert: { DEFAULT: '#B42318' }, // errores de formulario (contraste AA sobre paper)
       },
       // Bordes duros (estética de plano). `rounded-full` sólo para círculos reales: fotos, nodos, puntos.
       borderRadius: {
