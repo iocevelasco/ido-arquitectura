@@ -1,7 +1,21 @@
 # IDO Arquitectura
 
-Landing page de IDO Arquitectura ("Ideas con denominación de origen").
+Landing de IDO Arquitectura ("Ideas con denominación de origen"), estudio de arquitectura e interiorismo en Caracas.
 
-- `docs/guion-landing.md`: guion de contenido, identidad visual y estructura de secciones.
+**Web:** https://iocevelasco.github.io/ido-arquitectura/ (se publica sola con cada cambio en `main`).
+
+## Desarrollo
+
+```bash
+npm install
+npm run dev     # http://localhost:7273/
+npm run build
+```
+
+Stack: Vite + React + TypeScript + Tailwind. Ver `CLAUDE.md` para la organización del código y las reglas.
+
+## Documentos
+
+- `docs/guion-landing.md`: guion de contenido extraído del Canva, identidad visual y pendientes.
 - `docs/estructura-visual.md`: dirección visual, wireframes por sección e interacciones.
 - `docs/assets/`: recortes de referencia del equipo y logo.
