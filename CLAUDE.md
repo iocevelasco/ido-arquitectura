@@ -10,8 +10,10 @@ Estructura tomada de `iocevelasco/topoconcret`.
 - Contacto: formulario que **envía por WhatsApp** (`src/components/ui/ContactForm.tsx`): arma el texto con
   `contactMessage()` y abre `wa.me` (`whatsappUrl()`). No hay backend. Sin `COMPANY.whatsapp` el formulario
   muestra un aviso y ofrece Instagram. Los chips de Tipologías marcan su opción en el formulario (`src/lib/typology.ts`).
-- Base: `/ido-arquitectura/` (GitHub Pages) por defecto; `VITE_BASE=/` para dominio propio.
-  `npm run build` = `tsc && vite build`: **un error de tipos rompe el build** (y el CI).
+- Deploy: GitHub Pages desde `main` (`.github/workflows/deploy.yml`) → https://iocevelasco.github.io/ido-arquitectura/.
+  Base `/ido-arquitectura/` por defecto; `VITE_BASE=/` para dominio propio (Coolify).
+  `npm run build` = `tsc && vite build`: **un error de tipos rompe el build, el CI y el deploy**.
+  `ci.yml` compila cada PR.
 - Gestor de paquetes: npm.
 
 ## Comandos

@@ -2,6 +2,8 @@
 
 Landing de IDO Arquitectura ("Ideas con denominación de origen"), estudio de arquitectura e interiorismo en Caracas.
 
+**Web:** https://iocevelasco.github.io/ido-arquitectura/ (se publica sola con cada cambio en `main`).
+
 ## Desarrollo
 
 ```bash

@@ -1,9 +1,8 @@
 name: CI
 
+# En main el build lo corre deploy.yml.
 on:
   pull_request:
-  push:
-    branches: [main]
 
 jobs:
   build:
