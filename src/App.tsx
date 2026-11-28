@@ -3,6 +3,7 @@ import Footer from './components/layout/Footer'
 import Hero from './components/sections/Hero'
 import Team from './components/sections/Team'
 import Process from './components/sections/Process'
+import Reel from './components/sections/Reel'
 import Typologies from './components/sections/Typologies'
 import Projects from './components/sections/Projects'
 import Press from './components/sections/Press'
@@ -23,6 +24,7 @@ export default function App() {
         <Hero />
         <Team />
         <Process />
+        <Reel />
         <Typologies />
         <Projects />
         <Press />

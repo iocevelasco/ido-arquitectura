@@ -13,6 +13,8 @@ import { cn } from '../../lib/cn'
 
 const SLIDE_MS = 5000
 const SWIPE_PX = 40
+/** Más fotos que esto y los puntos se cambian por una barra de avance. */
+const MAX_DOTS = 8
 
 interface ProjectCarouselProps {
   images: ProjectImage[]
@@ -194,27 +196,37 @@ export default function ProjectCarousel({ images, label }: ProjectCarouselProps)
             <ChevronRight size={18} aria-hidden="true" />
           </button>
 
-          <div className="ml-2 flex items-center">
-            {images.map((img, i) => (
-              <button
-                key={img.base}
-                type="button"
-                onClick={() => goTo(i)}
-                aria-label={`Ver foto ${i + 1}`}
-                aria-current={i === index ? 'true' : undefined}
-                className="flex h-11 w-6 items-center justify-center"
-              >
-                <span
-                  className={cn(
-                    'h-2 w-2 rounded-full transition-colors duration-base',
-                    i === index ? 'bg-dot' : 'bg-ink/25 hover:bg-ink/50'
-                  )}
-                />
-              </button>
-            ))}
-          </div>
+          {count > MAX_DOTS ? (
+            // Con muchas fotos los puntos no caben a 375 px: barra de avance en su lugar.
+            <div className="ml-2 h-0.5 min-w-0 flex-1 bg-ink/15" aria-hidden="true">
+              <div
+                className="h-full bg-dot transition-[width] duration-base"
+                style={{ width: `${((index + 1) / count) * 100}%` }}
+              />
+            </div>
+          ) : (
+            <div className="ml-2 flex items-center">
+              {images.map((img, i) => (
+                <button
+                  key={img.base}
+                  type="button"
+                  onClick={() => goTo(i)}
+                  aria-label={`Ver foto ${i + 1}`}
+                  aria-current={i === index ? 'true' : undefined}
+                  className="flex h-11 w-6 items-center justify-center"
+                >
+                  <span
+                    className={cn(
+                      'h-2 w-2 rounded-full transition-colors duration-base',
+                      i === index ? 'bg-dot' : 'bg-ink/25 hover:bg-ink/50'
+                    )}
+                  />
+                </button>
+              ))}
+            </div>
+          )}
 
-          <span className="meta ml-auto" aria-live={playing ? 'off' : 'polite'}>
+          <span className="meta ml-auto shrink-0 pl-3" aria-live={playing ? 'off' : 'polite'}>
             {String(index + 1).padStart(2, '0')} / {String(count).padStart(2, '0')}
           </span>
         </div>

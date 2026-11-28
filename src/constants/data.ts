@@ -7,8 +7,8 @@ export const COMPANY = {
   city: 'Caracas, Venezuela',
   coords: '10°30′N 66°55′O',
   instagram: 'ido.arquitectura',
-  // PENDIENTE del cliente (guion §5): sin estos datos, Contacto muestra sólo Instagram.
-  whatsapp: '' as string, // formato internacional sin "+": 58412XXXXXXX
+  // PENDIENTE del cliente (guion §5): falta el correo.
+  whatsapp: '584129176403' as string, // formato internacional sin "+"
   email: '' as string,
   year: new Date().getFullYear(),
 }
@@ -152,6 +152,25 @@ export const PROCESS: { title: string; steps: ProcessStep[] } = {
   ],
 }
 
+// ── Reel: del plano a la obra (entre Proceso y Tipologías) ──────────────────
+export const REEL = {
+  titleStrong: 'Llevamos tus ideas',
+  titleLight: 'a la realidad',
+  intro:
+    'Del primer trazo a la obra terminada. Dibujamos, modelamos y construimos cada capa contigo, para que veas tu proyecto antes de que exista.',
+  // Las tres etapas que muestra el video, en orden.
+  stages: ['Plano', 'Volumen', 'Obra'],
+  cta: 'Cuéntanos tu proyecto',
+  video: {
+    src: 'video/reel-ideas.mp4',
+    poster: 'video/reel-ideas-poster.webp',
+    width: 720,
+    height: 1280,
+    label:
+      'Animación: el plano de una casa se levanta en volúmenes y se separa en capas hasta mostrar la obra terminada',
+  },
+}
+
 // ── Tipologías (lámina 10) ──────────────────────────────────────────────────
 export const TYPOLOGIES = {
   title: '¿Qué cosas hemos hecho?',
@@ -222,7 +241,122 @@ export const PROJECTS = {
         'El resultado fue una estructura expuesta, ensamblada en obra y elevada en grúas hasta la terraza del CC Líder. Perfiles, paneles, piso vinílico, luminarias, tuberías y, por supuesto, acrílico, se transformaron en un espacio que albergó maquinaria de gran formato y zonas de atención al público. El stand reinterpretó el muestrario de Vecxel a escala 1:1, convirtiéndolo en marquesina de entrada, con barandas encastradas y dos pórticos que definían el recorrido.',
         'Tanto en el stand como en las oficinas, el acrílico no está #exhibIDO: se habita. Se convierte en muros, lámparas y superficies que delimitan áreas de trabajo, atención y espera.',
       ],
-      images: [], // PENDIENTE: fotos de la obra (carpeta de Drive del cliente)
+      images: [
+        {
+          base: 'images/proyectos/vecxel/obra-15',
+          alt: 'Stand de Vecxel terminado: marquesina blanca con el logo, perfiles iluminados y la zona de máquinas al fondo',
+          width: 1600,
+          height: 1200,
+        },
+        {
+          base: 'images/proyectos/vecxel/obra-13',
+          alt: 'Frente del stand con el letrero «Bienvenidos», techo de acrílico espejado y máquinas de corte en exhibición',
+          width: 1200,
+          height: 1600,
+        },
+        {
+          base: 'images/proyectos/vecxel/obra-11',
+          alt: 'Pórtico de entrada al stand con el muestrario de acrílicos de colores suspendido bajo la estructura',
+          width: 1200,
+          height: 1600,
+        },
+        {
+          base: 'images/proyectos/vecxel/obra-10',
+          alt: 'Pórtico blanco iluminado con el logo de Vecxel y el arcoíris de láminas de acrílico colgando',
+          width: 1200,
+          height: 1600,
+        },
+        {
+          base: 'images/proyectos/vecxel/obra-09',
+          alt: 'Láminas de acrílico de todos los colores colgadas en degradado sobre la estructura del stand',
+          width: 1200,
+          height: 1600,
+        },
+        {
+          base: 'images/proyectos/vecxel/obra-08',
+          alt: 'Recepción del stand con el lema de Vecxel en un muro espejado y una cortadora láser en exhibición',
+          width: 1200,
+          height: 1600,
+        },
+        {
+          base: 'images/proyectos/vecxel/obra-07',
+          alt: 'Esquina del stand: columna de perfiles iluminados y panel negro con la marca Vecxel en vertical',
+          width: 1200,
+          height: 1600,
+        },
+        {
+          base: 'images/proyectos/vecxel/obra-16',
+          alt: 'Pantalla y cortadora láser bajo un techo de acrílico espejado que refleja el video',
+          width: 1200,
+          height: 1600,
+        },
+        {
+          base: 'images/proyectos/vecxel/obra-17',
+          alt: 'Perfiles metálicos con luz interior y el muestrario de colores al fondo del recorrido',
+          width: 1200,
+          height: 1600,
+        },
+        {
+          base: 'images/proyectos/vecxel/obra-18',
+          alt: 'Estructura expuesta del stand, perfiles con iluminación y láminas de acrílico translúcido',
+          width: 1200,
+          height: 1600,
+        },
+        {
+          base: 'images/proyectos/vecxel/obra-01',
+          alt: 'Montaje en la feria: pórticos de perfiles metálicos con el muestrario de acrílicos ya colgado',
+          width: 1600,
+          height: 900,
+        },
+        {
+          base: 'images/proyectos/vecxel/obra-02',
+          alt: 'Primera cercha de perfiles galvanizados armada en el piso del taller',
+          width: 1200,
+          height: 1600,
+        },
+        {
+          base: 'images/proyectos/vecxel/obra-03',
+          alt: 'Estructura del stand armada en el taller, con láminas de acrílico negro en primer plano',
+          width: 1200,
+          height: 1600,
+        },
+        {
+          base: 'images/proyectos/vecxel/obra-04',
+          alt: 'Pórtico de perfiles galvanizados en pie dentro del taller',
+          width: 1200,
+          height: 1600,
+        },
+        {
+          base: 'images/proyectos/vecxel/obra-05',
+          alt: 'Estructura completa del stand ensamblada a prueba en el taller',
+          width: 1200,
+          height: 1600,
+        },
+        {
+          base: 'images/proyectos/vecxel/obra-06',
+          alt: 'Recorrido interior de la estructura del stand durante el ensamblaje de prueba',
+          width: 1200,
+          height: 1600,
+        },
+        {
+          base: 'images/proyectos/vecxel/obra-19',
+          alt: 'Oficinas de Vecxel: muros blancos facetados con repisas y plantas, bajo luminarias lineales',
+          width: 1200,
+          height: 1600,
+        },
+        {
+          base: 'images/proyectos/vecxel/obra-20',
+          alt: 'Oficina cerrada con paneles de acrílico amarillo, del piso al techo',
+          width: 1200,
+          height: 1600,
+        },
+        {
+          base: 'images/proyectos/vecxel/obra-21',
+          alt: 'Oficina con muros de acrílico verde translúcido y puerta blanca',
+          width: 1200,
+          height: 1600,
+        },
+      ],
     },
     {
       id: 'diasa',
