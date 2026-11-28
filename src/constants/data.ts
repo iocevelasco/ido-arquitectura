@@ -183,33 +183,29 @@ export interface Project {
   architects: string
   summary: string
   body: string[]
-  /** Fotos en public/images/proyectos/<id>/. PENDIENTE: originales en alta del cliente. */
-  images: { src: string; alt: string }[]
+  /** Fotos del carrusel, en el orden en que se muestran. Vacío = recuadro "Foto pendiente". */
+  images: ProjectImage[]
+}
+
+/**
+ * Foto de proyecto en public/images/proyectos/<id>/. Cada foto existe en dos tamaños WebP:
+ * `<nombre>.webp` (lado mayor 1600 px) y `<nombre>-800.webp` (800 px), sin EXIF.
+ */
+export interface ProjectImage {
+  /** Ruta sin extensión ni sufijo: 'images/proyectos/diasa/obra-01'. */
+  base: string
+  alt: string
+  /** Tamaño de la versión de 1600 px (para reservar el espacio y elegir el encuadre). */
+  width: number
+  height: number
 }
 
 const ARCHITECTS = 'Adriana Russián · Alejandro Lucero · José Mario Wong'
 
 export const PROJECTS = {
   title: 'Proyectos destacados',
+  // Orden pedido por el cliente: Vecxel primero.
   items: [
-    {
-      id: 'diasa',
-      title: 'Oficinas que respiran identidad de marca',
-      client: 'Diasa',
-      work: 'Sede comercial La California Norte',
-      period: 'Agosto – diciembre 2024',
-      year: '2024',
-      location: 'Caracas',
-      architects: ARCHITECTS,
-      summary:
-        'Un interiorismo que articula coworking, oficinas, terrazas, showroom y salas de reuniones bajo una misma narrativa espacial, con el acrílico como protagonista.',
-      body: [
-        'La remodelación de las oficinas de Diasa en Caracas fue una oportunidad para consolidar una imagen industrial fresca, vibrante e innovadora. Luego de intervenir sus sedes en Guatire, diseñamos un interiorismo que articula coworking, oficinas privadas, terrazas de usos múltiples, cocina, comedor, showroom y salas de reuniones, todo bajo una misma narrativa espacial.',
-        'El acrílico se convirtió en protagonista: murales, señalética, pizarras y detalles que exploran sus posibilidades mediante corte láser. La obra "Las Velas", suspendida con guayas y tensores, da la bienvenida en la sala de espera del primer piso. El semicuero, la iluminación neutra y cálida, y los aportes gráficos en vinil completan una atmósfera elegante y funcional.',
-        'Las terrazas, rebautizadas como "Oasis", integran vegetación como parte esencial del espacio, al igual que en interiores. El resultado: oficinas que no sólo representan a la marca, sino que la habitan.',
-      ],
-      images: [],
-    },
     {
       id: 'vecxel',
       title: 'Duplicar la obra sin duplicar recursos',
@@ -226,7 +222,50 @@ export const PROJECTS = {
         'El resultado fue una estructura expuesta, ensamblada en obra y elevada en grúas hasta la terraza del CC Líder. Perfiles, paneles, piso vinílico, luminarias, tuberías y, por supuesto, acrílico, se transformaron en un espacio que albergó maquinaria de gran formato y zonas de atención al público. El stand reinterpretó el muestrario de Vecxel a escala 1:1, convirtiéndolo en marquesina de entrada, con barandas encastradas y dos pórticos que definían el recorrido.',
         'Tanto en el stand como en las oficinas, el acrílico no está #exhibIDO: se habita. Se convierte en muros, lámparas y superficies que delimitan áreas de trabajo, atención y espera.',
       ],
-      images: [],
+      images: [], // PENDIENTE: fotos de la obra (carpeta de Drive del cliente)
+    },
+    {
+      id: 'diasa',
+      title: 'Oficinas que respiran identidad de marca',
+      client: 'Diasa',
+      work: 'Sede comercial La California Norte',
+      period: 'Agosto – diciembre 2024',
+      year: '2024',
+      location: 'Caracas',
+      architects: ARCHITECTS,
+      summary:
+        'Un interiorismo que articula coworking, oficinas, terrazas, showroom y salas de reuniones bajo una misma narrativa espacial, con el acrílico como protagonista.',
+      body: [
+        'La remodelación de las oficinas de Diasa en Caracas fue una oportunidad para consolidar una imagen industrial fresca, vibrante e innovadora. Luego de intervenir sus sedes en Guatire, diseñamos un interiorismo que articula coworking, oficinas privadas, terrazas de usos múltiples, cocina, comedor, showroom y salas de reuniones, todo bajo una misma narrativa espacial.',
+        'El acrílico se convirtió en protagonista: murales, señalética, pizarras y detalles que exploran sus posibilidades mediante corte láser. La obra "Las Velas", suspendida con guayas y tensores, da la bienvenida en la sala de espera del primer piso. El semicuero, la iluminación neutra y cálida, y los aportes gráficos en vinil completan una atmósfera elegante y funcional.',
+        'Las terrazas, rebautizadas como "Oasis", integran vegetación como parte esencial del espacio, al igual que en interiores. El resultado: oficinas que no sólo representan a la marca, sino que la habitan.',
+      ],
+      images: [
+        {
+          base: 'images/proyectos/diasa/obra-01',
+          alt: 'Armado de acero de una columna nueva dentro de la excavación de la fundación',
+          width: 1200,
+          height: 1600,
+        },
+        {
+          base: 'images/proyectos/diasa/obra-02',
+          alt: 'Obreros con casco colocan una viga de acero en una abertura de la losa',
+          width: 900,
+          height: 1600,
+        },
+        {
+          base: 'images/proyectos/diasa/obra-03',
+          alt: 'Electricistas instalan el tablero eléctrico en un muro de bloques de arcilla',
+          width: 1200,
+          height: 1600,
+        },
+        {
+          base: 'images/proyectos/diasa/obra-04',
+          alt: 'Equipo de IDO Arquitectura junto al personal de la obra, entre muros en demolición y andamios',
+          width: 1600,
+          height: 1200,
+        },
+      ],
     },
   ] satisfies Project[],
 }

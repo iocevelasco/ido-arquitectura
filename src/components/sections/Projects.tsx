@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { PROJECTS, type Project } from '../../constants/data'
-import { asset } from '../../constants/base'
+import ProjectCarousel from '../ui/ProjectCarousel'
 import SectionHeading from '../ui/SectionHeading'
 import { cn } from '../../lib/cn'
 
@@ -21,7 +21,6 @@ export default function Projects() {
 
 function ProjectCase({ project, reverse }: { project: Project; reverse: boolean }) {
   const [expanded, setExpanded] = useState(false)
-  const cover = project.images[0]
   const bodyId = `proyecto-${project.id}-texto`
 
   return (
@@ -52,27 +51,23 @@ function ProjectCase({ project, reverse }: { project: Project; reverse: boolean 
           {project.title}
         </h3>
 
-        <div className="relative mt-6">
-          {cover ? (
-            <img
-              src={asset(cover.src)}
-              alt={cover.alt}
-              loading="lazy"
-              className="chamfer aspect-[16/9] w-full object-cover"
-            />
+        <div className="relative mt-8">
+          {project.images.length ? (
+            <ProjectCarousel images={project.images} label={project.client} />
           ) : (
-            // PENDIENTE: fotos originales en alta del cliente (public/images/proyectos/<id>/)
-            <div className="chamfer blueprint-grid flex aspect-[16/9] w-full items-center justify-center bg-paper-2">
+            // PENDIENTE: fotos del cliente en public/images/proyectos/<id>/
+            <div className="chamfer blueprint-grid flex aspect-[4/3] w-full items-center justify-center bg-paper-2">
               <span className="meta">Foto pendiente · {project.client}</span>
             </div>
           )}
-          <div className="chamfer absolute -bottom-5 right-4 bg-dot px-4 py-3 text-ink">
+          {/* Arriba, para no tapar los controles del carrusel */}
+          <div className="chamfer absolute -top-5 right-8 z-10 bg-dot px-4 py-3 text-ink">
             <span className="font-display text-2xl font-extrabold">{project.year}</span>
             <span className="meta block text-ink">{project.location}</span>
           </div>
         </div>
 
-        <p className="mt-10 max-w-2xl text-lg">{project.summary}</p>
+        <p className="mt-8 max-w-2xl text-lg">{project.summary}</p>
         <div id={bodyId} hidden={!expanded} className="mt-4 max-w-2xl space-y-4 text-ink/80">
           {project.body.map((paragraph) => (
             <p key={paragraph.slice(0, 24)}>{paragraph}</p>
