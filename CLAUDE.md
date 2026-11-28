@@ -62,6 +62,6 @@ npx tsc --noEmit  # sólo tipos
 
 ## Pendientes del cliente
 
-Ver `docs/guion-landing.md` §5: WhatsApp y correo (`COMPANY.whatsapp` / `COMPANY.email` vacíos),
+Ver `docs/guion-landing.md` §5: correo (`COMPANY.email` vacío),
 fotos en alta de Diasa y Vecxel (`PROJECTS.items[].images`), logo en vector, axonometría en 4 capas
 (hero y proceso), lámina 13 del Canva.
